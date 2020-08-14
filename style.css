@@ -1,0 +1,45 @@
+div {
+    position: absolute;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background: #f00;
+    animation-name: move;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+}
+
+div:before,
+div:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.25);
+    transition: all 0.3s;
+    transform: translate(-100%, 0);
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+div:after {
+    transition-delay: 0.2s;
+}
+
+div:hover:before,
+div:hover::after {
+    transform: translate(0, 0);
+}
+
+@keyframes move {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100px;
+    }
+}
